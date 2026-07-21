@@ -34,7 +34,20 @@ function Countdown() {
   const { days, hours, minutes, seconds } = calculateTime();
 
   return (
-    <section className="relative bg-black px-6 py-20 text-white">
+    <section
+  id="countdown"
+  className="
+    relative
+    -mt-16
+    z-20
+    rounded-t-[40px]
+    bg-black
+    px-6
+    py-20
+    text-white
+    shadow-[0_-30px_80px_rgba(0,0,0,.8)]
+  "
+>
 
       <div className="absolute inset-0 bg-red-950/20"></div>
 

@@ -1,4 +1,29 @@
+import { useLocation } from "react-router-dom";
+import { QRCodeSVG } from "qrcode.react";
+import { useRef } from "react";
+import { toPng } from "html-to-image";
+
 function Success() {
+  const location = useLocation();
+
+  const attendeeId = location.state?.attendeeId || "Unknown";
+  const firstName = location.state?.firstName || "";
+  const qrRef = useRef(null);
+
+const downloadQR = async () => {
+  if (!qrRef.current) return;
+
+  const dataUrl = await toPng(qrRef.current);
+
+  const link = document.createElement("a");
+
+  link.download = `${attendeeId}.png`;
+
+  link.href = dataUrl;
+
+  link.click();
+};
+
   return (
     <section className="min-h-screen bg-black px-6 py-20 text-white flex items-center justify-center">
 
@@ -8,17 +33,13 @@ function Success() {
           🎉
         </div>
 
-
-        <h1 className="mt-6 text-4xl font-black md:text-5xl">
+        <h1 className="mt-6 text-4xl font-black md:text-3xl md:text-5xl">
           Registration Successful
         </h1>
 
-
         <p className="mt-5 text-gray-300">
-          Thank you for registering for The Outpouring 2026.
-          We can't wait to welcome you.
+          Thank you {firstName} for registering for The Outpouring 2026.
         </p>
-
 
         <div className="mt-10 rounded-2xl bg-black/40 p-6">
 
@@ -26,18 +47,40 @@ function Success() {
             Your Attendee ID
           </p>
 
-
-          <h2 className="mt-3 text-3xl font-black">
-            TSN-2026-0001
+          <h2 className="mt-3 text-3xl font-black text-red-500">
+            {attendeeId}
           </h2>
 
         </div>
 
+        <div
+  ref={qrRef}
+  className="mt-10 rounded-2xl bg-white p-8 text-center"
+>
+          <QRCodeSVG
+  value={attendeeId}
+  size={180}
+/>
 
-        <p className="mt-8 text-sm text-gray-400">
-          Your QR ticket will appear here after confirmation.
-        </p>
+<p className="mt-5 text-black text-xl font-bold">
+  THE OUTPOURING 2026
+</p>
 
+<p className="text-gray-700">
+  {firstName}
+</p>
+
+<p className="mt-2 text-red-600 font-bold">
+  {attendeeId}
+</p>
+        </div>
+
+        <button
+          onClick={downloadQR}
+          className="mt-8 rounded-full bg-red-600 px-8 py-4 font-bold hover:bg-red-500"
+        >
+          Download My QR
+        </button>
 
       </div>
 

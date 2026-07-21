@@ -49,21 +49,23 @@ const handleSubmit = async (e) => {
   }
 
   // Save to database
-  const { error } = await supabase
-    .from("registrations")
-    .insert([
-      {
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        city: formData.city,
-        whatsapp: formData.whatsapp,
-        gender: formData.gender,
-        first_time: formData.firstTime === "Yes",
-        checked_in: false,
-        attendee_id:
-          "OUT-" + Math.random().toString(36).substring(2, 8).toUpperCase(),
-      },
-    ]);
+ const { data, error } = await supabase
+  .from("registrations")
+  .insert([
+    {
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      city: formData.city,
+      whatsapp: formData.whatsapp,
+      gender: formData.gender,
+      first_time: formData.firstTime === "Yes",
+      checked_in: false,
+      attendee_id:
+        "OUT-" + Math.random().toString(36).substring(2, 8).toUpperCase(),
+    },
+  ])
+  .select()
+  .single();
 
   if (error) {
   console.error(error);
@@ -71,7 +73,12 @@ const handleSubmit = async (e) => {
   return;
 }
 
-  navigate("/success");
+  navigate("/success", {
+  state: {
+    attendeeId: data.attendee_id,
+    firstName: data.first_name,
+  },
+});
 };
   return (
     <section className="min-h-screen bg-black px-6 py-20 text-white">
@@ -110,7 +117,7 @@ const handleSubmit = async (e) => {
       firstName: e.target.value,
     })
   }
-  className="rounded-xl bg-white/10 p-4 outline-none placeholder:text-gray-400"
+  className="rounded-xl bg-white/10 px-4 py-4 outline-none placeholder:text-gray-400"
 />
 
 
@@ -124,7 +131,7 @@ const handleSubmit = async (e) => {
       lastName: e.target.value,
     })
   }
-  className="rounded-xl bg-white/10 p-4 outline-none placeholder:text-gray-400"
+  className="rounded-xl bg-white/10 px-4 py-4 outline-none placeholder:text-gray-400"
 />
           </div>
 
@@ -139,7 +146,7 @@ const handleSubmit = async (e) => {
       city: e.target.value,
     })
   }
-  className="w-full rounded-xl bg-white/10 p-4 outline-none placeholder:text-gray-400"
+  className="w-full rounded-xl bg-white/10 px-4 py-4 outline-none placeholder:text-gray-400"
 />
 
 
@@ -153,7 +160,7 @@ const handleSubmit = async (e) => {
       whatsapp: e.target.value,
     })
   }
-  className="w-full rounded-xl bg-white/10 p-4 outline-none placeholder:text-gray-400"
+  className="w-full rounded-xl bg-white/10 px-4 py-4 outline-none placeholder:text-gray-400"
 />
 
           <select
@@ -164,7 +171,7 @@ const handleSubmit = async (e) => {
       gender: e.target.value,
     })
   }
-  className="w-full rounded-xl bg-white/10 p-4 text-gray-300 outline-none"
+  className="w-full rounded-xl bg-white/10 px-4 py-4 text-gray-300 outline-none"
 >
 
   <option value="">
@@ -191,7 +198,7 @@ const handleSubmit = async (e) => {
       firstTime: e.target.value,
     })
   }
-  className="w-full rounded-xl bg-white/10 p-4 text-gray-300 outline-none"
+  className="w-full rounded-xl bg-white/10 px-4 py-4 text-gray-300 outline-none"
 >
 
   <option value="">

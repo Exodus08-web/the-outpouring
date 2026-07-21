@@ -1,3 +1,10 @@
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTiktok,
+  FaTelegramPlane,
+} from "react-icons/fa";
+
 function EventDetails() {
   const details = [
     {
@@ -73,15 +80,134 @@ function EventDetails() {
         </div>
 
 
-        {/* Location note */}
-        <div className="mt-12 rounded-3xl border border-white/10 bg-white/5 p-6">
+        {/* Connect With Us */}
+<div
+  className="
+    mt-12
+    rounded-3xl
+    border
+    border-red-900/40
+    bg-gradient-to-r
+    from-red-950/30
+    via-black
+    to-yellow-900/20
+    p-8
+    backdrop-blur-md
+  "
+>
 
-          <p className="text-gray-300">
-            📍 We can't wait to welcome you to Chapel Hall, University of Ibadan
-            for an unforgettable encounter.
-          </p>
+  <h3 className="text-center text-2xl font-black">
+    Stay Connected
+  </h3>
 
-        </div>
+
+  <div className="mt-6 flex items-center justify-center gap-3 sm:gap-5">
+
+    <a
+      href="https://www.facebook.com/share/1Brj8sr1hy/?mibextid=wwXIfr
+"
+      target="_blank"
+      rel="noreferrer"
+      className="
+flex
+h-12
+w-12
+sm:h-16
+sm:w-16
+items-center
+justify-center
+rounded-full
+bg-white/5
+text-xl
+sm:text-2xl
+text-white
+transition-all
+duration-300
+hover:scale-110
+"
+    >
+      <FaFacebookF />
+    </a>
+
+    <a
+      href="https://www.instagram.com/the_sent_network?igsh=MXMwaG50Z3U2NzB5Mg%3D%3D&utm_source=qr"
+      target="_blank"
+      rel="noreferrer"
+      className="
+flex
+h-12
+w-12
+sm:h-16
+sm:w-16
+items-center
+justify-center
+rounded-full
+bg-white/5
+text-xl
+sm:text-2xl
+text-white
+transition-all
+duration-300
+hover:scale-110
+"
+    >
+      <FaInstagram />
+    </a>
+
+    <a
+      href="https://www.tiktok.com/@thesentnetwork01?_r=1&_t=ZS-98CtTyiZH7t
+"
+      target="_blank"
+      rel="noreferrer"
+      className="
+flex
+h-12
+w-12
+sm:h-16
+sm:w-16
+items-center
+justify-center
+rounded-full
+bg-white/5
+text-xl
+sm:text-2xl
+text-white
+transition-all
+duration-300
+hover:scale-110
+"
+    >
+      <FaTiktok />
+    </a>
+
+    <a
+      href="https://t.me/Thesentnetwork"
+      target="_blank"
+      rel="noreferrer"
+      className="
+flex
+h-12
+w-12
+sm:h-16
+sm:w-16
+items-center
+justify-center
+rounded-full
+bg-white/5
+text-xl
+sm:text-2xl
+text-white
+transition-all
+duration-300
+hover:scale-110
+"
+    >
+      <FaTelegramPlane />
+    </a>
+
+  </div>
+
+</div>
 
 
       </div>

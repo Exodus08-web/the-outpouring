@@ -8,15 +8,15 @@ import EventDetails from "../components/EventDetails";
 
 function Home() {
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Countdown />
-      <AboutTSN />
-      <PastOutpouring />
-      <Experience />
-      <EventDetails />
-    </>
+      <>
+  <Navbar />
+  <Hero />
+  <Countdown />
+  <AboutTSN />
+  <PastOutpouring />
+  <Experience />
+  <EventDetails />
+</>
   );
 }
 

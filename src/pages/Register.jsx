@@ -91,7 +91,25 @@ function Register() {
             </Link>
 
           </div>
-
+<Link
+  to="/retrieve-ticket"
+  className="
+    mt-6
+    inline-block
+    rounded-full
+    border
+    border-red-600
+    px-8
+    py-4
+    font-bold
+    text-red-500
+    transition
+    hover:bg-red-600
+    hover:text-white
+  "
+>
+  🎟 Lost Your Ticket?
+</Link>
 
         </div>
 
