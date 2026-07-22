@@ -35,7 +35,24 @@ function HealingRegister() {
     alert("Please complete all required fields.");
     return;
   }
+const { data: existingRequest, error: checkError } = await supabase
+  .from("prayer_requests")
+  .select("whatsapp")
+  .eq("whatsapp", formData.whatsapp)
+  .maybeSingle();
 
+
+if (checkError) {
+  alert("Something went wrong checking WhatsApp.");
+  console.error(checkError);
+  return;
+}
+
+
+if (existingRequest) {
+  alert("This WhatsApp number has already submitted a prayer request.");
+  return;
+}
   setLoading(true);
 
   let imageUrl = "";
@@ -45,20 +62,20 @@ function HealingRegister() {
     const fileName =
       Date.now() + "-" + hospitalRecord.name;
 
-    const { error: uploadError } =
-      await supabase.storage
-        .from("healing-images")
-        .upload(fileName, hospitalRecord);
+    const { data: uploadData, error: uploadError } =
+  await supabase.storage
+    .from("healing-images")
+    .upload(fileName, hospitalRecord);
 
-    if (uploadError) {
+console.log("UPLOAD DATA:", uploadData);
+console.log("UPLOAD ERROR:", uploadError);
 
-      alert(uploadError.message);
-
-      setLoading(false);
-
-      return;
-
-    }
+if (uploadError) {
+  alert(uploadError.message);
+  console.error(uploadError);
+  setLoading(false);
+  return;
+}
 
     const {
       data: { publicUrl }
@@ -107,7 +124,8 @@ function HealingRegister() {
     ])
 .select()
 .single();
-console.log(data);
+console.log("INSERT DATA:", data);
+console.log("INSERT ERROR:", error);
 
   setLoading(false);
 

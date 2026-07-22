@@ -31,6 +31,7 @@ const handleSubmit = async (e) => {
   }
 
   // Check if WhatsApp already exists
+  
   const { data: existingUser, error: checkError } = await supabase
     .from("registrations")
     .select("whatsapp")
@@ -53,15 +54,19 @@ const handleSubmit = async (e) => {
   .from("registrations")
   .insert([
     {
+      attendee_id:
+        "OUT-" +
+        Math.random()
+          .toString(36)
+          .substring(2, 8)
+          .toUpperCase(),
+
       first_name: formData.firstName,
       last_name: formData.lastName,
       city: formData.city,
       whatsapp: formData.whatsapp,
       gender: formData.gender,
-      first_time: formData.firstTime === "Yes",
-      checked_in: false,
-      attendee_id:
-        "OUT-" + Math.random().toString(36).substring(2, 8).toUpperCase(),
+      first_time: formData.firstTime,
     },
   ])
   .select()
