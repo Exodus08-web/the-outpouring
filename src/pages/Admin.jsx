@@ -57,14 +57,36 @@ async function handleLogout() {
     >
       Prayer Line
     </Link>
+<Link
+  to="/admin/content"
+  className="rounded-full bg-blue-600 px-5 py-2 font-bold"
+>
+  Website Content
+</Link>
+    <div className="flex gap-3">
 
-    <Link
-      to="/checkin"
-      className="rounded-full bg-green-600 px-5 py-2 font-bold"
-    >
-      Check-In
-    </Link>
+  <Link
+    to="/checkin"
+    className="rounded-full bg-green-600 px-5 py-2 font-bold"
+  >
+    Check In
+  </Link>
 
+
+  <Link
+    to="/admin/testimonies"
+    className="rounded-full bg-amber-600 px-5 py-2 font-bold"
+  >
+    Testimonies
+  </Link>
+
+</div>
+<Link
+  to="/admin/new-converts"
+  className="rounded-full bg-indigo-600 px-5 py-2 font-bold"
+>
+  New Converts
+</Link>
     <button
       onClick={handleLogout}
       className="rounded-full bg-gray-700 px-5 py-2 font-bold"
@@ -93,7 +115,7 @@ async function handleLogout() {
   "
 />
 
-      <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
 
   <div className="rounded-2xl bg-red-600 p-6 shadow-xl">
     <h3 className="text-sm uppercase tracking-widest">
@@ -140,6 +162,18 @@ async function handleLogout() {
       }
     </p>
   </div>
+  <div
+  onClick={() => navigate("/admin/new-converts")}
+  className="cursor-pointer rounded-2xl bg-indigo-600 p-6 shadow-xl hover:bg-indigo-500 transition"
+>
+  <h3 className="text-sm uppercase tracking-widest">
+    New Converts
+  </h3>
+
+  <p className="mt-3 text-lg font-bold">
+    Open Manager →
+  </p>
+</div>
 
 </div>
 

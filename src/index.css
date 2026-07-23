@@ -1,1 +1,23 @@
 @import "tailwindcss";
+.swiper-pagination-bullet {
+  background: rgba(252, 249, 249, 0.949);
+}
+
+.swiper-pagination-bullet-active {
+  background: #d4af37 !important;
+}
+.testimony-heading {
+  font-family: "Playfair Display", serif;
+}
+
+.testimony-body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+html,
+body,
+#root {
+  overflow-x: hidden;
+}
+html {
+  scroll-behavior: smooth;
+}

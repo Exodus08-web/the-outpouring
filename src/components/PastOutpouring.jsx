@@ -15,7 +15,7 @@ const gallery = Object.values(images);
 
 function PastOutpouring() {
   return (
-    <section className="overflow-hidden bg-black py-24 text-white">
+    <section id="past-moments"className="overflow-hidden bg-black py-24 text-white">
 
       <div className="mx-auto max-w-7xl px-6">
 

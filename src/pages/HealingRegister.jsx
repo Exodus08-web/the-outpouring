@@ -155,13 +155,14 @@ console.log("INSERT ERROR:", error);
 
 
         <h1 className="mt-5 text-4xl font-black leading-tight md:text-6xl">
-          Submit Your Prayer Request
+          Experience the healing power of Jesus Christ.
         </h1>
 
 
         <p className="mt-5 text-gray-300">
-          Share your request with us. We believe in the power of prayer
-          and standing together in faith.
+          This is a special registation for those who wants to be prayed for
+          directly by The Man of God concerning serious illness/diseases
+          (preffered with medical report)
         </p>
 
 

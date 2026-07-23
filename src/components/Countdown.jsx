@@ -1,104 +1,245 @@
 import { useEffect, useState } from "react";
 
 function Countdown() {
+
   const eventDate = new Date("July 30, 2026 19:00:00").getTime();
 
   const [timeLeft, setTimeLeft] = useState(eventDate - Date.now());
 
+
   useEffect(() => {
+
     const timer = setInterval(() => {
       setTimeLeft(eventDate - Date.now());
     }, 1000);
 
+
     return () => clearInterval(timer);
+
   }, []);
 
+
+
   const calculateTime = () => {
+
     const totalSeconds = Math.max(
       Math.floor(timeLeft / 1000),
       0
     );
 
-    const days = Math.floor(totalSeconds / (3600 * 24));
-    const hours = Math.floor(
-      (totalSeconds % (3600 * 24)) / 3600
-    );
-    const minutes = Math.floor(
-      (totalSeconds % 3600) / 60
-    );
-    const seconds = totalSeconds % 60;
 
-    return { days, hours, minutes, seconds };
+    return {
+      days: Math.floor(totalSeconds / 86400),
+
+      hours: Math.floor(
+        (totalSeconds % 86400) / 3600
+      ),
+
+      minutes: Math.floor(
+        (totalSeconds % 3600) / 60
+      ),
+
+      seconds: totalSeconds % 60,
+    };
+
   };
 
-  const { days, hours, minutes, seconds } = calculateTime();
+
+  const {
+    days,
+    hours,
+    minutes,
+    seconds
+  } = calculateTime();
+
+
+
+  const countdown = [
+    ["Days", days],
+    ["Hours", hours],
+    ["Minutes", minutes],
+    ["Seconds", seconds],
+  ];
+
+
 
   return (
-    <section
-  id="countdown"
-  className="
-    relative
-    -mt-16
-    z-20
-    rounded-t-[40px]
-    bg-black
-    px-6
-    py-20
-    text-white
-    shadow-[0_-30px_80px_rgba(0,0,0,.8)]
-  "
+
+<section
+id="countdown"
+className="
+relative
+-mt-10
+z-20
+rounded-t-[35px]
+overflow-hidden
+bg-gradient-to-b
+from-[#090613]
+to-black
+px-5
+py-14
+text-white
+"
 >
 
-      <div className="absolute inset-0 bg-red-950/20"></div>
 
-      <div className="relative z-10 mx-auto max-w-5xl text-center">
+<div
+className="
+absolute
+left-1/2
+top-0
+h-72
+w-72
+-translate-x-1/2
+rounded-full
+bg-[#d4af37]/10
+blur-[100px]
+"
+/>
 
-        <p className="uppercase tracking-[0.4em] text-red-500">
-          The Outpouring 2026
-        </p>
 
-        <h2 className="mt-4 text-4xl font-black md:text-6xl">
-          Something Powerful Is Coming
-        </h2>
 
-        <div className="mt-12 grid grid-cols-2 gap-5 md:grid-cols-4">
+<div className="
+relative
+mx-auto
+max-w-5xl
+text-center
+">
 
-          {[
-            ["Days", days],
-            ["Hours", hours],
-            ["Minutes", minutes],
-            ["Seconds", seconds],
-          ].map(([label, value]) => (
-            <div
-              key={label}
-              className="
-              rounded-3xl
-              border
-              border-red-600/40
-              bg-red-950/40
-              p-6
-              "
-            >
-              <h3 className="text-4xl font-black md:text-6xl">
-                {String(value).padStart(2, "0")}
-              </h3>
 
-              <p className="mt-2 text-sm uppercase tracking-widest text-gray-300">
-                {label}
-              </p>
-            </div>
-          ))}
+<p
+className="
+text-[10px]
+font-bold
+uppercase
+tracking-[0.4em]
+text-[#d4af37]
+"
+>
+The Outpouring 2026
+</p>
 
-        </div>
 
-        <p className="mt-8 text-lg text-gray-300">
-          July 30th, 2026 • 7:00 PM
-        </p>
 
-      </div>
+<h2
+className="
+mt-4
+font-serif
+text-3xl
+leading-tight
+md:text-5xl
+"
+>
+A Divine Encounter Awaits
+</h2>
 
-    </section>
+
+
+<p
+className="
+mt-3
+text-sm
+text-white/60
+"
+>
+July 30th • 7:00 PM
+</p>
+
+
+
+
+<div
+className="
+mt-8
+grid
+grid-cols-4
+gap-2
+"
+>
+
+
+{
+countdown.map(([label,value])=>(
+
+
+<div
+key={label}
+className="
+rounded-2xl
+border
+border-[#d4af37]/20
+bg-white/[0.05]
+p-3
+backdrop-blur-xl
+"
+>
+
+
+<h3
+className="
+text-2xl
+font-black
+text-[#f3e098]
+md:text-5xl
+"
+>
+{String(value).padStart(2,"0")}
+</h3>
+
+
+<p
+className="
+mt-1
+text-[9px]
+uppercase
+tracking-widest
+text-white/50
+"
+>
+{label}
+</p>
+
+
+</div>
+
+
+))
+}
+
+
+
+</div>
+
+
+
+
+<div
+className="
+mt-8
+inline-flex
+rounded-full
+border
+border-[#d4af37]/30
+bg-[#d4af37]/10
+px-5
+py-2
+text-xs
+font-semibold
+text-[#f3e098]
+"
+>
+Prepare Your Heart 
+</div>
+
+
+
+</div>
+
+
+</section>
+
   );
 }
+
 
 export default Countdown;
