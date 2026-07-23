@@ -10,6 +10,7 @@ import Testimonies from "../components/Testimonies";
 import AboutOutpouring from "../components/AboutOutpouring";
 import AboutMission from "../components/AboutMission";
 import Footer from "../components/Footer";
+import VisionMission from "../components/VisionMission";
 
 
 function Home() {
@@ -26,6 +27,7 @@ function Home() {
   <NextSteps />
   <PartnerSection />
   <EventDetails />
+  <VisionMission />
   <Footer />
 </>
   );

@@ -16,11 +16,9 @@ function AboutMission() {
     .single();
 
   if (error) {
-    console.log(error);
+    console.error(error);
     return;
   }
-
-  console.log("ABOUT SENT MAN DATA:", data);
 
   setContent(data);
 }
